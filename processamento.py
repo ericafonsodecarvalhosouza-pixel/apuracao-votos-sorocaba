@@ -86,4 +86,16 @@ def apuracao(resultados):
         "media_partido_vencedor": media_partidos.get(partido_melhor_media, 0),
         "cargo_maior_media": cargo_melhor_media,
         "media_cargo_vencedor": media_cargos.get(cargo_melhor_media, 0)
-    }           
+    }
+
+def exibir_resultados(titulo, resultado):
+
+    print(f"\n===== {titulo} =====")
+
+    print(f"Média geral: {resultado['media_geral']:.2f}")
+
+    print(f"Partido vencedor: {resultado['partido_maior_media']}")
+    print(f"Média: {resultado['media_partido_vencedor']:.2f}")
+
+    print(f"Cargo vencedor: {resultado['cargo_maior_media']}")
+    print(f"Média: {resultado['media_cargo_vencedor']:.2f}")        
