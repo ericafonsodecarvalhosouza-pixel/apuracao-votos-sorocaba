@@ -1,40 +1,57 @@
-from processamento import dividir_dados, exibir_resultados
-from multiprocessos import executar_processos
-from time import perf_counter
+from processamento import (
+    dividir_dados,
+    processar_partes,
+    apuracao,
+    exibir_resultados
+)
 
+from multiprocessos import executar_multiprocessing
+from multithreading import executar_multithreading
+from teste_time import medir_tempo
+
+
+#def executar_sequencial():
+    # Essa função executa o processamento de forma sequencial.
+    #partes = dividir_dados()
+
+    #resultados = []
+
+    #for parte in partes:
+        #resultado = processar_partes(parte)
+        #resultados.append(resultado)
+
+    #return apuracao(resultados)
 
 
 def main():
-    partes = dividir_dados()
 
-    if not partes:
-        print("Arquivo vazio.")
-        return
+    # PROCESSAMENTO SEQUENCIAL
+    ##resultado_sequencial, tempo_sequencial = medir_tempo(
+        #executar_sequencial
+    #)
 
-    inicio = perf_counter()
-    resultado_processos = executar_processos(partes)
-    tempo_processos = perf_counter() - inicio
-    
-    exibir_resultados("PROCESSO", resultado_processos)
-    print(f"Tempo de processamento {tempo_processos:.2f}")
-    
-    
-    
-    ''''
-    print("\n===== COMPARAÇÃO DE DESEMPENHO =====")
+    # MULTIPROCESSAMENTO
+    resultado_processos, tempo_processos = medir_tempo(
+        executar_multiprocessing
+    )
 
-        print(f"Tempo com processos: {tempo_processos:.4f} segundos")
-        print(f"Tempo com threads: {tempo_threads:.4f} segundos")
+    # MULTITHREADING
+    resultado_threads, tempo_threads = medir_tempo(
+        executar_multithreading
+    )
 
-        if tempo_processos < tempo_threads:
-            print("Melhor desempenho: MULTIPROCESSING")
-        elif tempo_threads < tempo_processos:
-            print("Melhor desempenho: MULTITHREADING")
-        else:
-            print("As duas abordagens tiveram o mesmo tempo.")
-'''
-    
+     # EXIBIÇÃO DOS RESULTADOS
+    #exibir_resultados("PROCESSAMENTO SEQUENCIAL", resultado_sequencial)
+
+    exibir_resultados("MULTIPROCESSAMENTO", resultado_processos)
+    exibir_resultados("MULTITHREADING", resultado_threads)
+
+
+    # EXIBIÇÃO DOS TEMPOS
+    print("\n===== TEMPO DE EXECUÇÃO =====")
+    print(f"Multiprocessamento: {tempo_processos:.4f} segundos")
+    print(f"Multithreading: {tempo_threads:.4f} segundos")
+
 
 if __name__ == "__main__":
     main()
-    

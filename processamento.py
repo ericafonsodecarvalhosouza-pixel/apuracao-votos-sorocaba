@@ -1,6 +1,6 @@
 import pandas as pd
 
-caminho = "sorocaba.csv"
+caminho = r"C:\Users\camil\Downloads\Apuração de sorocaba\apuracao-votos-sorocaba\sorocaba.csv"
 
 COLUNA_VOTOS = "QT_VOTOS_NOMINAIS_VALIDOS"
 SIGLA_COLUNA_PARTIDO = "SG_PARTIDO"

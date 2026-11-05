@@ -11,3 +11,10 @@ def executar_processos(partes):
         resultados = pool.map(processar_partes, partes)
     
     return apuracao(resultados)
+
+def executar_multiprocessing():
+    partes = dividir_dados()
+
+    resultado_final = executar_processos(partes)
+
+    return resultado_final
