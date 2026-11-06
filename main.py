@@ -10,25 +10,25 @@ from multithreading import executar_multithreading
 from teste_time import medir_tempo
 
 
-#def executar_sequencial():
+def executar_sequencial():
     # Essa função executa o processamento de forma sequencial.
-    #partes = dividir_dados()
+    partes = dividir_dados()
 
-    #resultados = []
+    resultados = []
 
-    #for parte in partes:
-        #resultado = processar_partes(parte)
-        #resultados.append(resultado)
+    for parte in partes:
+        resultado = processar_partes(parte)
+        resultados.append(resultado)
 
-    #return apuracao(resultados)
-
+    return apuracao(resultados)
 
 def main():
 
-    # PROCESSAMENTO SEQUENCIAL
-    ##resultado_sequencial, tempo_sequencial = medir_tempo(
-        #executar_sequencial
-    #)
+    #PROCESSAMENTO SEQUENCIAL
+    
+    resultado_sequencial, tempo_sequencial = medir_tempo(
+        executar_sequencial
+    )
 
     # MULTIPROCESSAMENTO
     resultado_processos, tempo_processos = medir_tempo(
@@ -40,7 +40,7 @@ def main():
         executar_multithreading
     )
 
-     # EXIBIÇÃO DOS RESULTADOS
+    #EXIBIÇÃO DOS RESULTADOS
     #exibir_resultados("PROCESSAMENTO SEQUENCIAL", resultado_sequencial)
 
     exibir_resultados("MULTIPROCESSAMENTO", resultado_processos)
@@ -51,6 +51,13 @@ def main():
     print("\n===== TEMPO DE EXECUÇÃO =====")
     print(f"Multiprocessamento: {tempo_processos:.4f} segundos")
     print(f"Multithreading: {tempo_threads:.4f} segundos")
+    
+    if tempo_processos < tempo_threads:
+        print("Melhor desempenho: MULTIPROCESSING")
+    elif tempo_threads < tempo_processos:
+        print("Melhor desempenho: MULTITHREADING")
+    else:
+        print("As duas abordagens tiveram o mesmo tempo.")
 
 
 if __name__ == "__main__":
