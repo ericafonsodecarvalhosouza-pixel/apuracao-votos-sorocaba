@@ -1,8 +1,6 @@
 
 import threading
 
-import threading
-
 from processamento import (
     dividir_dados,
     processar_partes,
