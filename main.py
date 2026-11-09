@@ -1,7 +1,4 @@
 from processamento import (
-    dividir_dados,
-    processar_partes,
-    apuracao,
     exibir_resultados
 )
 
