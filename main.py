@@ -30,6 +30,7 @@ def main():
     print(f"Multiprocessamento: {tempo_processos:.4f} segundos")
     print(f"Multithreading: {tempo_threads:.4f} segundos")
     
+    print("\n===== Melhor Desempenho =====")
     if tempo_processos < tempo_threads:
         print("Melhor desempenho: MULTIPROCESSING")
     elif tempo_threads < tempo_processos:
