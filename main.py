@@ -10,25 +10,9 @@ from multithreading import executar_multithreading
 from teste_time import medir_tempo
 
 
-def executar_sequencial():
-    # Essa função executa o processamento de forma sequencial.
-    partes = dividir_dados()
 
-    resultados = []
-
-    for parte in partes:
-        resultado = processar_partes(parte)
-        resultados.append(resultado)
-
-    return apuracao(resultados)
 
 def main():
-
-    #PROCESSAMENTO SEQUENCIAL
-    
-    resultado_sequencial, tempo_sequencial = medir_tempo(
-        executar_sequencial
-    )
 
     # MULTIPROCESSAMENTO
     resultado_processos, tempo_processos = medir_tempo(
@@ -39,9 +23,6 @@ def main():
     resultado_threads, tempo_threads = medir_tempo(
         executar_multithreading
     )
-
-    #EXIBIÇÃO DOS RESULTADOS
-    #exibir_resultados("PROCESSAMENTO SEQUENCIAL", resultado_sequencial)
 
     exibir_resultados("MULTIPROCESSAMENTO", resultado_processos)
     exibir_resultados("MULTITHREADING", resultado_threads)
